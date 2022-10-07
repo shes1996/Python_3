@@ -91,6 +91,7 @@ number = 8
 
 def fibonachi(number):
     fibo = []
+    negafibo = []
     for index in range(0, number + 1):
 
         if index == 0:
@@ -99,19 +100,12 @@ def fibonachi(number):
             fibo.insert(1, 1)
         else:
             fibo.insert(index, fibo[index - 2] + fibo[index - 1])
-    return fibo
-
-
-def negafibonachi(number):
-    negafibo = []
-    for index in range(0, number):
-        if index == 0:
-            negafibo.insert(0, 1)
-        elif index == 1:
-            negafibo.insert(1, -1)
+    for index in range(1, number + 1):
+        if index % 2 == 0:
+            negafibo.insert(0, fibo[index] * -1)
         else:
-            negafibo.insert(index, negafibo[index - 2] - negafibo[index - 1])
-    return negafibo
+            negafibo.insert(0, fibo[index])
+    return negafibo+fibo
 
 
-print(f'Список чисел Фибоначчи до {number}го числа: {negafibonachi(number)[::-1] + fibonachi(number)}')
+print(f'Список чисел Фибоначчи до {number}го числа: {fibonachi(number)}')
